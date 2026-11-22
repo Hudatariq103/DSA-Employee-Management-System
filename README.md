@@ -249,15 +249,7 @@ The system includes basic input validation to maintain accurate employee records
 
 ---
 
-## ⚠️ Current Limitations
 
-- Attendance is recorded for days 1–30 only.
-- Attendance undo history is stored in memory and is cleared when the program closes.
-- Administrator credentials are hardcoded.
-- Payroll tracks paid/unpaid status; it does not perform actual bank transfers or tax calculations.
-- The application uses a terminal interface rather than a graphical user interface.
-
----
 
 ## 👩‍💻 Author
 
