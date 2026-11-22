@@ -670,7 +670,7 @@ void addEmployee() {
 // ================= EDIT EMPLOYEE =================
 
 void editEmployee() {
-    string id;
+    string id, input;
 
     cout << "\nEnter Employee ID: ";
     cin >> id;
@@ -682,35 +682,81 @@ void editEmployee() {
         return;
     }
 
+    Employee updated = *e;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    cout << "New Name: ";
-    getline(cin, e->name);
+    cout << "\nEditing Employee: " << updated.id << endl;
+    cout << "Employee ID cannot be changed.\n";
+    cout << "Enter 0 at any step to cancel.\n";
 
-    cout << "New Email: ";
-    getline(cin, e->email);
-
-    cout << "New Phone: ";
-    getline(cin, e->phone);
-
-    cout << "New Department: ";
-    getline(cin, e->department);
-
-    cout << "New Salary: ";
-    cin >> e->salary;
-
-    if (!cin || e->salary < 0) {
-        cout << "Invalid salary.\n";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "\nNew Name: ";
+    getline(cin, input);
+    if (input == "0") {
+        cout << "Editing cancelled. No changes saved.\n";
         return;
     }
+    updated.name = input;
 
+    while (true) {
+        cout << "New Email: ";
+        getline(cin, input);
+
+        if (input == "0") {
+            cout << "Editing cancelled. No changes saved.\n";
+            return;
+        }
+        if (input.find('@') == string::npos) {
+            cout << "Invalid Email! Email must contain @. Please try again.\n";
+            continue;
+        }
+        updated.email = input;
+        break;
+    }
+
+    while (true) {
+        cout << "New Phone Number (7 digits): ";
+        getline(cin, input);
+
+        if (input == "0") {
+            cout << "Editing cancelled. No changes saved.\n";
+            return;
+        }
+        if (input.length() != 7 || !isDigits(input)) {
+            cout << "Invalid Phone Number! It must contain exactly 7 digits.\n";
+            continue;
+        }
+        updated.phone = input;
+        break;
+    }
+
+    cout << "New Department: ";
+    getline(cin, input);
+    if (input == "0") {
+        cout << "Editing cancelled. No changes saved.\n";
+        return;
+    }
+    updated.department = input;
+
+    while (true) {
+        cout << "New Monthly Salary: ";
+        getline(cin, input);
+
+        if (input == "0") {
+            cout << "Editing cancelled. No changes saved.\n";
+            return;
+        }
+        if (!isDigits(input)) {
+            cout << "Invalid Salary! Enter digits only. Please try again.\n";
+            continue;
+        }
+        updated.salary = atof(input.c_str());
+        break;
+    }
+
+    *e = updated;
     saveData();
-
-    cout << "Employee updated successfully.\n";
+    cout << "\nEmployee updated successfully.\n";
 }
-
 // ================= DELETE EMPLOYEE =================
 
 void deleteEmployee() {
