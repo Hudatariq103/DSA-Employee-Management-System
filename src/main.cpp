@@ -11,6 +11,11 @@
 
 using namespace std;
 
+// Heading background colors
+const string RESET = "\033[0m";
+const string BG_TEAL = "\033[48;2;22;68;91m";
+const string WHITE_BOLD = "\033[97;1m";
+
 // ================= EMPLOYEE STRUCTURE =================
 
 struct Employee {
@@ -1065,9 +1070,23 @@ int main() {
     int choice;
 
     do {
-        cout << "\n============================================\n";
-        cout << "       EMPLOYEE MANAGEMENT SYSTEM\n";
-        cout << "============================================\n";
+        const int bannerWidth = 52;
+        const string title = "EMPLOYEE MANAGEMENT SYSTEM";
+        const int leftSpace = (bannerWidth - static_cast<int>(title.length())) / 2;
+        const int rightSpace = bannerWidth - static_cast<int>(title.length()) - leftSpace;
+
+        cout << "\n";
+        cout << "\033[48;2;8;126;139m" << string(8, ' ')
+             << "\033[48;2;22;138;173m" << string(9, ' ')
+             << "\033[48;2;67;97;168m" << string(9, ' ')
+             << "\033[48;2;118;86;168m" << string(9, ' ')
+             << "\033[48;2;176;74;133m" << string(9, ' ')
+             << "\033[48;2;209;107;74m" << string(8, ' ') << RESET << "\n";
+
+        cout << BG_TEAL << WHITE_BOLD
+             << string(leftSpace, ' ') << title << string(rightSpace, ' ')
+             << RESET << "\n";
+
 
         cout << "1. Dashboard\n";
         cout << "2. Add Employee\n";
