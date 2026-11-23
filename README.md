@@ -101,8 +101,6 @@ Allows the administrator to mark and view employee attendance records.
 
 Demonstrates the stack-based undo functionality, which restores the previous attendance value after a correction.
 
-![Undo Attendance](screenshots/undo-attendance.png)
-
 ### 10. 💰 Payroll Management
 
 Displays unpaid employees and processes payroll in First-In, First-Out order.
