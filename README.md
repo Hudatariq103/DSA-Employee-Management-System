@@ -97,9 +97,6 @@ Allows the administrator to mark and view employee attendance records.
 
 ![Attendance Management](screenshots/attendance-management.png)
 
-### 9. ↩️ Undo Attendance
-
-Demonstrates the stack-based undo functionality, which restores the previous attendance value after a correction.
 
 ### 10. 💰 Payroll Management
 
